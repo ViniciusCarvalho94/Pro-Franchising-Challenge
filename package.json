@@ -1,0 +1,38 @@
+{
+  "name": "pro-franchising-challenge",
+  "version": "1.0.0",
+  "description": "Pro Franchising Challenge",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViniciusCarvalho94/Pro-Franchising-Challenge.git"
+  },
+  "keywords": [
+    "Pro Franchising",
+    "Challenge",
+    "Node",
+    "MongoDB"
+  ],
+  "author": "https://github.com/ViniciusCarvalho94",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViniciusCarvalho94/Pro-Franchising-Challenge/issues"
+  },
+  "homepage": "https://github.com/ViniciusCarvalho94/Pro-Franchising-Challenge#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.3.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "nodemon": "^2.0.15"
+  }
+}
