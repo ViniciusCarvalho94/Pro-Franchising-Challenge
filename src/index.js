@@ -1,14 +1,16 @@
+require('dotenv').config();
+
 const express = require('express');
 const handleError = require('./middlewares/handleError');
-const { helloWorld } = require('./routes');
+const { loginUserRoute } = require('./routes');
 
 const app = express();
 
 app.use(express.json());
 
-const PORT = 3000;
+const { PORT } = process.env;
 
-app.use('/', helloWorld);
+app.use('/', loginUserRoute);
 
 app.use(handleError);
 

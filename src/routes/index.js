@@ -1,5 +1,5 @@
-const helloWorld = require('./helloWorld');
+const loginUserRoute = require('./loginUserRoute');
 
 module.exports = {
-  helloWorld,
+  loginUserRoute,
 };

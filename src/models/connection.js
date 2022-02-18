@@ -1,11 +1,12 @@
+require('dotenv').config();
+
 const { MongoClient } = require('mongodb');
 
 const MONGODB_OPTIONS = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-const MONGODB_URL = 'mongodb://localhost:27017/Bank';
-const DB_NAME = 'Bank';
+const { MONGODB_URL, DB_NAME } = process.env;
 
 let db = null;
 
