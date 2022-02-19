@@ -1,9 +1,14 @@
 const { objError } = require('../functions');
-const { registerProductModel } = require('../models');
+const { registerProductModel, findOneProductModel } = require('../models');
 const { createProductSchema } = require('../schemas');
 
 function verifyPermission(rule) {
   if (rule !== 'admin') throw objError(401, 'Usuário não autorizado');
+}
+
+async function verifyProductAlreadyExists(name) {
+  const product = await findOneProductModel(name);
+  if (product) throw objError(400, 'Produto já existente');
 }
 
 function validateSchema({ name, price, ingredients }) {
@@ -15,6 +20,9 @@ function validateSchema({ name, price, ingredients }) {
 module.exports = async (rule, product) => {
   verifyPermission(rule);
   validateSchema(product);
+
+  const { name } = product;
+  await verifyProductAlreadyExists(name);
 
   await registerProductModel(product);
 };

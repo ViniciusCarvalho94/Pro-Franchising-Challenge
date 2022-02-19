@@ -8,7 +8,6 @@ module.exports = async (req, res, next) => {
 
     return res.status(201).json({ message: 'Produto criado com sucesso' });
   } catch (error) {
-    console.log(error.message);
     return next(error);
   }
 };
