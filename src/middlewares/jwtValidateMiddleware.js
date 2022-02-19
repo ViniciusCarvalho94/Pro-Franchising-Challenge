@@ -21,9 +21,10 @@ module.exports = async (req, res, next) => {
   try {
     const { authorization } = req.headers;
     verifyNotEmptyAuthorization(authorization);
-    const findUser = await validateJWT(authorization);
+    const { rule, username } = await validateJWT(authorization);
 
-    req.findUser = findUser;
+    const user = { rule, username };
+    req.user = user;
 
     return next();
   } catch (err) {
