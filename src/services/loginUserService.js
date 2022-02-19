@@ -7,21 +7,24 @@ const { loginUserSchema } = require('../schemas');
 const { objError } = require('../functions');
 const { genJWT } = require('../auth');
 
+const STATUS_400 = 400;
+const ERROR_DESCRIPTION = 'Usuário ou senha inválidos';
+
 function validateSchema(username, password) {
   const { error } = loginUserSchema.validate({ username, password });
-  if (error) throw objError(400, 'Usuário ou senha errados');
+  if (error) throw objError(STATUS_400, ERROR_DESCRIPTION);
 }
 
 async function validatePassword(password, matchPassword) {
   const passwordConfirmed = await compare(password, matchPassword);
-  if (!passwordConfirmed) throw objError(400, 'Usuário ou senha errados');
+  if (!passwordConfirmed) throw objError(STATUS_400, ERROR_DESCRIPTION);
 
   return passwordConfirmed;
 }
 
 async function validateLogin(username, password) {
   const findUser = await findUserModel(username);
-  if (!findUser) throw objError(400, 'Usuário ou senha errados');
+  if (!findUser) throw objError(STATUS_400, ERROR_DESCRIPTION);
 
   const { password: matchPassword } = findUser;
   await validatePassword(password, matchPassword);
