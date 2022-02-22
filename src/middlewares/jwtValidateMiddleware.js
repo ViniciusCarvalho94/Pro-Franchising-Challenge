@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const { findUserModel } = require('../models');
-const { objError } = require('../functions/objError');
+const { objError } = require('../functions');
 const { SECRET } = require('../auth');
 
 function verifyNotEmptyAuthorization(authorization) {
